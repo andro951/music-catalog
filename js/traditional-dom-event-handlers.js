@@ -9,27 +9,37 @@ var record_card3 = record_cards[2];
 var close_btn = document.getElementById('close-player');
 
 
-/* 
-  TO DO: 
+// TO DO: 
   
-      1) Use traditional DOM event handlers to do the following when the second and third records are clicked:
+//       1) Use traditional DOM event handlers to do the following when the second and third records are clicked:
  
-         // Get the Spotify track id of the song saved as its attribute
-         var track_id = record_card2.getAttribute('data-track-id');
+//          // Get the Spotify track id of the song saved as its attribute
+//          var track_id = record_card2.getAttribute('data-track-id');
          
-         // Get the iframe element that contains the Spotify embedded player
-         var player_iframe = document.getElementById('spotify-player');
+//          // Get the iframe element that contains the Spotify embedded player
+//          var player_iframe = document.getElementById('spotify-player');
          
-         // Update the iframe source to the clicked track
-         player_iframe.src = `https://open.spotify.com/embed/track/${track_id}`;
+//          // Update the iframe source to the clicked track
+//          player_iframe.src = `https://open.spotify.com/embed/track/${track_id}`;
          
-         // Show and animate the player
-         document.getElementById('spotify-player-container').classList.add('visible');          
-      
-      
-      2) Use a traditional DOM event handler to do the following when the close button of the Spotify embedded player is clicked:
+//          // Show and animate the player
+//          document.getElementById('spotify-player-container').classList.add('visible');          
 
-         // Close the Spotify embedded player by changing its visibility 
-         document.getElementById('spotify-player-container').classList.remove('visible');
+const updatePlayer2 = (record_card) => {
+   var track_id = record_card.getAttribute('data-track-id');
+   var player_iframe = document.getElementById('spotify-player');
+   player_iframe.src = `https://open.spotify.com/embed/track/${track_id}`;
+   document.getElementById('spotify-player-container').classList.add('visible');
+}
+
+record_card2.onclick = () => updatePlayer2(record_card2);
+record_card3.onclick = () => updatePlayer2(record_card3);
       
-*/
+//       2) Use a traditional DOM event handler to do the following when the close button of the Spotify embedded player is clicked:
+
+//          // Close the Spotify embedded player by changing its visibility 
+//          document.getElementById('spotify-player-container').classList.remove('visible');
+
+close_btn.onclick = () => {
+   document.getElementById('spotify-player-container').classList.remove('visible');
+}
